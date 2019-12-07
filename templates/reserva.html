@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div id="formReserva">
+    <form action="">
+        <div class="view intro-2">
+            <div class="mask flex-center rgba-black-strong">
+                <div class="full-bg-img">
+                    <div class="mask d-flex flex-center align-items-left">
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col-md-6 ">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <h3 class="card-header info-color white-text text-center py-4 ">
+                                                <p>Reserva de Vuelo {{vuelos["cod_vuelo"]}}</p>
+                                            </h3>
+                                        </div>
+                                        <div class ="container">
+                                            <h5>Datos de Vuelo</h5>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h6>Origen:{{vuelos["origen"]}}</h6>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h6>Destino:{{vuelos["destino"]}}</h6>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    Hora de Salida: {{vuelos["hora_salida"]}}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    Hora de llegada: {{vuelos["hora_llegada"]}}
+                                                </div>
+                                                <div class="col-md-12">
+                                                    Fecha de vuelo: {{vuelos["fecha"]}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <form action="">
+                                            <div class="container ">
+                                                <div class="md-form">
+                                                    <select class="browser-default custom-select">
+                                                        <option selected>Elije tu asiento</option>
+                                                        <option>1</option>
+                                                    </select>
+                                                </div>
+                                                <div class="md-form">
+                                                    <i class="fas fa-user prefix "></i>
+                                                    <input type="text" name="nombre">
+                                                    <label for="inputValidationEx2" class="active" data-error="wrong"
+                                                        data-success="right">Nombre</label>
+                                                </div>
+                                            </div>
+                                            <div class="row ">
+                                                <div class="col-md-3 offset-md-3 text-center">
+                                                    <button class="btn btn-info btn-block my-4"
+                                                        type="submit">Confirmar</button>
+                                                </div>
+                                                <div class="col-md-3 text-center">
+                                                    <a class="btn btn-info btn-block my-4" href="/vuelos"
+                                                        type="submit">cancelar</a>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+    .view {
+        background: url("https://images.pexels.com/photos/723240/pexels-photo-723240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")no-repeat center center;
+        background-size: cover;
+        height: 100vh;
+    }
+</style>
+{% endblock %}
