@@ -12,7 +12,7 @@ heading = "Flask y MongoDB"
 client = MongoClient("mongodb://127.0.0.1:27017") 
 db = client.mymongodb
 vuelos = db.vuelos
-reservas = db.reservas
+reservas = db.reserva
 
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
@@ -39,14 +39,13 @@ def viewReservas ():
 @app.route("/completarReserva",methods=['POST'])
 def completarReserva():
         if request.method == 'POST':
-                id_vuelo= request.values.get('cod_vuelo')
+                id = request.values.get('idVuel')
+                id_vuelo = request.values.get('id_vuelo')
                 nombre = request.values.get('nombre')
                 id_asiento= request.values.get('id_asiento')
-                reservas.insert({"id_vuelo":id_vuelo,"nombre":nombre,id_asiento:"id_asiento"})      
+                reservas.insert({"id_vuelo":id_vuelo,"nombre":nombre, "id_asiento":id_asiento})      
+                vuelos.update({"_id":ObjectId(id),"asientos.id_asiento":id_asiento},{"$set":{"asientos.$.estado":False}})
                 return  redirect(url_for('index'))
-
-
-
 
 
 if __name__ == "__main__":
