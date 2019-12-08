@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="view intro-2">
+    <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+            <div class="container text-center white-text">
+                <div class="white-text text-center wow fadeInUp ">
+                    <h1 class="frase"><strong>La mejor Aerolinea y a los mejores precios</strong></h1>
+                    <h3 class="frase">Te mostramos todos los vuelos disponibles!</h3>
+                    <br>
+                    <h5 class="frase">Elije tu destino y vuela con nosotros!</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="page-section">
+    <h1 class="text-center" id="tit"><strong><i class="fas fa-plane fa-2x"></i>Elije el vuelo de tu
+            preferencia!</strong></h1>
+    <br>
+    <br>
+    <div class="container">
+        {% for vuelo in vuelos %}
+        <div class="card-columns">
+            <div class="card" style="width:650px; height: 260px;margin-left:20%;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img style="width:170px;height:135px" class="img-fluid imgTable"
+                            src="https://images.pexels.com/photos/164589/pexels-photo-164589.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                            alt="">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 id="card-tit"><strong>Vuelo Comercial</strong></h3>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Origen:{{vuelo["origen"]}}</h6>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Destino:{{vuelo["destino"]}}</h6>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Hora de Salida: {{vuelo["hora_salida"]}}</h6>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Hora de llegada: {{vuelo["hora_llegada"]}}</h6>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Fecha de vuelo: {{vuelo["fecha"]}}</h6>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Codigo de Vuelo: {{vuelo["cod_vuelo"]}}</h6>
+                            </div>
+                            <div class="col-md-12n" id="posBtn">
+                                <a href="./mostrarVuelo?_id={{vuelo['_id']}}" type="button" class="btn btn-indigo">Reservar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<style>
+    .view {
+        background: url("https://images.pexels.com/photos/2114206/pexels-photo-2114206.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")no-repeat center center;
+        background-size: cover;
+    }
+
+    html,
+    body,
+    header,
+    .view {
+        height: 100%;
+    }
+
+    .navbar {
+        z-index: 1;
+    }
+
+    .frase {
+        font-family: Ubuntu, sans-serif;
+        font-weight: 700;
+        padding: 0;
+        margin: 0;
+    }
+
+    .page-section {
+        padding: 100px 0;
+    }
+
+    .page-section h2.section-heading {
+        font-size: 40px;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .page-section h3.section-subheading {
+        font-size: 16px;
+        font-weight: 400;
+        font-style: italic;
+        margin-bottom: 75px;
+        text-transform: none;
+        font-family: 'Droid Serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    }
+
+    #tit {
+        font-weight: 700;
+        color: #1a237e;
+    }
+
+    .imgTable {
+        border-radius: 50%;
+        margin-left: 15px;
+        margin-top: 30px;
+        margin-bottom: 5px;
+    }
+
+    #card-tit {
+        color: #1a237e;
+        font-weight: 400;
+        margin-top: 25px;
+        padding-left: 70px;
+    }
+
+    #posBtn {
+        padding-left: 120px;
+    }
+
+    body {
+        background-color: #f5f5f5;
+    }
+</style>
+{% endblock %}
