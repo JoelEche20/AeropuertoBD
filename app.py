@@ -32,9 +32,9 @@ def mostrarVuelo ():
         vuel=vuelos.find({"_id":ObjectId(id)})
         return render_template('reserva.html',vuelos=vuel)
 
-@app.route("/reservas")
-def viewReservas ():
-    return 'hola'
+@app.route("/misReservas")
+def misReservas ():
+    return render_template('misReservas.html')
 
 @app.route("/completarReserva",methods=['POST'])
 def completarReserva():

@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="view intro-2">
+    <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+            <div class="container text-center white-text">
+                <div class="white-text text-center wow fadeInUp ">
+                    <h1 class="frase"><strong>La mejor Aerolinea y a los mejores precios</strong></h1>
+                    <h3 class="frase">¿Te olvidaste cuando era tu vuelo?</h3>
+                    <br>
+                    <h5 class="frase">Te damos la opcion de buscar tus vuelos</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="page-section">
+    <h1 class="text-center" id="tit"><strong><i class="fas fa-globe-africa fa-2x"></i>Busca tus Vuelos!</strong></h1>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 offset-md-4">
+                <form class="form-inline md-form form-sm mt-0">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+                        aria-label="Search">
+                    <div id="btnS" class="text-center">
+                        <button class="btn btn-outline-primary waves-effect" type="submit">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section">
+    <div class="container">
+        <div class="card-columns">
+            <div class="card text-center" style="width:250px;height:300px;">
+                <div class="aqua-gradient ">
+                    <h3 id="titcard">Vuelo:v1</h3>
+                    <p><i class="far fa-calendar-alt"></i> 20-15-2019</p>
+                </div>
+                <div>
+                    <p>Origen:CBBA</p>
+                    <p>Destino:LPZ</p>
+                    <p>Hora de Salida: 12:50</p>
+                    <p>Hora de llegada: 14:30</p>
+                    <p id="namV"class="aqua-gradient">Juan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .view {
+        background: url("https://images.pexels.com/photos/34631/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")no-repeat center center;
+        background-size: cover;
+    }
+
+    html,
+    body,
+    header,
+    .view {
+        height: 100%;
+    }
+
+    .navbar {
+        z-index: 1;
+    }
+
+    .frase {
+        font-family: Ubuntu, sans-serif;
+        font-weight: 700;
+        padding: 0;
+        margin: 0;
+    }
+
+    .page-section {
+        padding: 50px 0;
+    }
+
+    .page-section h2.section-heading {
+        font-size: 40px;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .page-section h3.section-subheading {
+        font-size: 16px;
+        font-weight: 400;
+        font-style: italic;
+        margin-bottom: 75px;
+        text-transform: none;
+        font-family: 'Droid Serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    }
+
+    #tit {
+        font-weight: 700;
+        color: #1a237e;
+    }
+
+    #btnS {
+        padding-left: 30%;
+    }
+    #titcard{
+        padding-top: 20px;
+    }
+    #namV{
+        padding-top: 15px;
+    }
+    @media (min-width: 576px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-columns {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-columns {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-columns {
+        column-count: 4;
+    }
+}
+</style>
+{% endblock %}
