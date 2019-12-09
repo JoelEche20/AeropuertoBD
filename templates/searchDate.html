@@ -8,7 +8,7 @@
                     <h1 class="frase"><strong>La mejor Aerolinea y a los mejores precios</strong></h1>
                     <h3 class="frase">Te mostramos todos los vuelos disponibles!</h3>
                     <br>
-                    <h5 class="frase">Elije tu destino y vuela con nosotros!</h5>
+                    <h5 class="frase">Solo busca el vuelo en la fecha que deseas!</h5>
                 </div>
             </div>
         </div>
@@ -17,11 +17,25 @@
 
 
 <section class="page-section">
-    <h1 class="text-center" id="tit"><strong><i class="fas fa-plane fa-2x"></i>Elije el vuelo de tu
-            preferencia!</strong></h1>
+    <h1 class="text-center" id="tit"><strong><i class="fas fa-plane fa-2x"></i>Buca tu velo en la fecha que quieras!</strong></h1>
     <br>
     <br>
     <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 offset-md-4">
+                    <form action="/searchDate" method="POST" class="form-inline md-form form-sm mt-0">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+                            aria-label="Search"  name="query">
+                            <label class="active">Ingrese la fecha de vuelo a buscar</label>
+                        <div id="btnS" class="text-center">
+                            <button class="btn btn-outline-primary waves-effect" type="submit">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container">
         {% for vuelo in vuelos %}
@@ -70,7 +84,7 @@
 
 <style>
     .view {
-        background: url("https://images.pexels.com/photos/2114206/pexels-photo-2114206.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")no-repeat center center;
+        background: url("https://images.pexels.com/photos/2007401/pexels-photo-2007401.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")no-repeat center center;
         background-size: cover;
     }
 

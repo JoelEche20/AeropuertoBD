@@ -1,6 +1,7 @@
 from flask import Flask, render_template,request,redirect,url_for 
 from bson import ObjectId
 from pymongo import MongoClient
+from datetime import datetime
 import os
 import sys
 
@@ -35,6 +36,27 @@ def mostrarVuelo ():
 @app.route("/misReservas")
 def misReservas ():
     return render_template('misReservas.html')
+
+@app.route("/edit")
+def edit ():
+    return render_template('editReserva.html')
+
+@app.route("/searchD")
+def searchD ():
+    return render_template('searchDate.html')
+
+@app.route("/searchDate",methods = ['POST', 'GET'])
+def searchDate ():
+        date =request.values.get('query')
+        vuelos_S=vuelos.find({"fecha":date})
+        return render_template('searchDate.html',vuelos=vuelos_S)
+
+@app.route("/searchMyReserv",methods = ['POST', 'GET'])
+def searchMyReserv ():
+        misReservas=[]
+        nombre =request.values.get('query')
+        misReservas=reservas.find({"nombre":nombre})
+        return render_template('misReservas.html',reservas=misReservas)
 
 @app.route("/completarReserva",methods=['POST'])
 def completarReserva():
