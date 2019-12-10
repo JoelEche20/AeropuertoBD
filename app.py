@@ -58,7 +58,9 @@ def searchMyReserv ():
         res=reservas.find({"nombre":nombre})
         exist=False
         for r in res:
-                misReservas.append(vuelos.find({"cod_vuelo":r["id_vuelo"]}))
+                misReservas.append(vuelos.find({"cod_vuelo":r["id_vuelo"]})[0])
+              
+        
         if misReservas != "":
                 exist=True
         return render_template('misReservas.html',reservas=misReservas,exist=exist,name=nombre)
