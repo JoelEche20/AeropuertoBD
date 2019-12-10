@@ -45,7 +45,8 @@ def edit ():
 def delete ():
         key=request.values.get("idR")
         idVuelo=request.values.get("idVuelo")
-        idAsiento=request.values.get("idAsiento")
+        idAsiento=request.values.get("idA")
+        eprint(idAsiento)
         vuelos.update({"_id":ObjectId(idVuelo),"asientos.id_asiento":idAsiento},{"$set":{"asientos.$.estado":True}})
         reservas.remove({"_id":ObjectId(key)})
         return render_template('misReservas.html')
