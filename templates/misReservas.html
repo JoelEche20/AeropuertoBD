@@ -41,26 +41,31 @@
     <div class="container">
         <div class="card-columns">
             {%if exist%}
-            {% for reserva in reservas %}
-            <div class="card text-center" style="width:250px;height:350px;">
-                <div class="aqua-gradient ">
-                    <h3 id="titcard">{{reserva["cod_vuelo"]}}</h3>
-                    <p><i class="far fa-calendar-alt"></i>{{reserva["fecha"]}}</p>
-                </div>
-                <div>
-                    <p>Origen:{{reserva["origen"]}}</p>
-                    <p>Destino:{{reserva["destino"]}}</p>
-                    <p>Hora de Salida: {{reserva["hora_salida"]}}</p>
-                    <p>Hora de llegada:{{reserva["hora_llegada"]}}</p>
-
-                    <a href="/edit" class="btn btn-info btn-sm">Editar</a>
-                    <a class="btn btn-info btn-sm">Eliminar</a>
-                    <br>
-
-                    <p id="namV" class="aqua-gradient">{{name}}</p>
-                </div>
-            </div>
-            {% endfor %}
+                {% for reserva in reservas %}
+                    <div class="card text-center" style="width:250px;height:500px;">
+                        <div class="aqua-gradient ">
+                            <h3 id="titcard">{{reserva["vuelo"]["cod_vuelo"]}}</h3>
+                            <p><i class="far fa-calendar-alt"></i>{{reserva["vuelo"]["fecha"]}}</p>
+                        </div>
+                        <div>
+                            <p>Origen:{{reserva["vuelo"]["origen"]}}</p>
+                            <p>Destino:{{reserva["vuelo"]["destino"]}}</p>
+                            <p>Hora de Salida: {{reserva["vuelo"]["hora_salida"]}}</p>
+                            <p>Hora de llegada:{{reserva["vuelo"]["hora_llegada"]}}</p>
+                            <p>Asiento:{{reserva["r"]["id_asiento"]}}</p>
+                            <a href="/edit" class="btn btn-info btn-sm">Editar</a>
+                            <form action="/delete" method="POST">
+                                <input type="text" name="idR" value="{{reserva['r']['_id']}}" style="display:none">
+                                <input type="text" name="idVuelo" value="{{reserva['vuelo']['_id']}}" style="display:none">
+                                <input type="text" name="idAsiento" value="{{reserva['r'][id_asiento]}}" style="display:none">
+                                <button class="btn btn-info btn-sm" type="submit">Eliminar</button>
+                            </form>
+                            
+                            <br>
+                            <p id="namV" class="aqua-gradient">{{reserva["r"]["nombre"]}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             {%endif%}
         </div>
     </div>

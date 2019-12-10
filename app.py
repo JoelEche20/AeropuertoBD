@@ -41,6 +41,15 @@ def misReservas ():
 def edit ():
     return render_template('editReserva.html')
 
+@app.route("/delete",methods = ['POST', 'GET'])
+def delete ():
+        key=request.values.get("idR")
+        idVuelo=request.values.get("idVuelo")
+        idAsiento=request.values.get("idAsiento")
+        vuelos.update({"_id":ObjectId(idVuelo),"asientos.id_asiento":idAsiento},{"$set":{"asientos.$.estado":True}})
+        reservas.remove({"_id":ObjectId(key)})
+        return render_template('misReservas.html')
+
 @app.route("/searchD")
 def searchD ():
     return render_template('searchDate.html')
@@ -57,11 +66,12 @@ def searchMyReserv ():
         nombre =request.values.get('query')
         res=reservas.find({"nombre":nombre})
         exist=False
+
         for r in res:
-                misReservas.append(vuelos.find({"cod_vuelo":r["id_vuelo"]})[0])
-              
+                vuelo = vuelos.find({"cod_vuelo":r["id_vuelo"]})[0]
+                misReservas.append({"vuelo": vuelo, "r": r})
         
-        if misReservas != "":
+        if misReservas != []:
                 exist=True
         return render_template('misReservas.html',reservas=misReservas,exist=exist,name=nombre)
 
