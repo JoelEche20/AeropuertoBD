@@ -55,8 +55,13 @@ def searchDate ():
 def searchMyReserv ():
         misReservas=[]
         nombre =request.values.get('query')
-        misReservas=reservas.find({"nombre":nombre})
-        return render_template('misReservas.html',reservas=misReservas)
+        res=reservas.find({"nombre":nombre})
+        exist=False
+        for r in res:
+                misReservas.append(vuelos.find({"cod_vuelo":r["id_vuelo"]}))
+        if misReservas != "":
+                exist=True
+        return render_template('misReservas.html',reservas=misReservas,exist=exist,name=nombre)
 
 @app.route("/completarReserva",methods=['POST'])
 def completarReserva():
