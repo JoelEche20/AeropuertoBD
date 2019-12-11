@@ -37,9 +37,6 @@ def mostrarVuelo ():
 def misReservas ():
     return render_template('misReservas.html')
 
-@app.route("/edit")
-def edit ():
-    return render_template('editReserva.html')
 
 @app.route("/delete",methods = ['POST', 'GET'])
 def delete ():
